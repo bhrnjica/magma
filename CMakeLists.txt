@@ -399,7 +399,7 @@ if ( WIN32 )
 	set( LIBS tester lapacktest magma )  ##magmaf )
 else()
 	# Unix doesn't seem to have a problem with mixing C, CUDA, and Fortran files
-	cuda_add_library( magma SHARED ${libmagma_all} )
+	cuda_add_library( magma ${libmagma_all} )
 	target_link_libraries( magma
 		${LAPACK_LIBRARIES}
 		${CUDA_CUDART_LIBRARY}
@@ -443,7 +443,7 @@ endif()
 include_directories( sparse/include )
 include_directories( sparse/control )
 include_directories( testing )
-cuda_add_library( magma_sparse SHARED ${libsparse_all} )
+cuda_add_library( magma_sparse ${libsparse_all} )
 target_link_libraries( magma_sparse
 	magma
 	${LAPACK_LIBRARIES}
